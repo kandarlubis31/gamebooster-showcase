@@ -13,6 +13,14 @@
 
 ---
 
+## 📸 Tampilan
+
+Dashboard utama — status ping, pilihan mode, whitelist aplikasi, dan tombol boost:
+
+![GameBooster LBS — dashboard utama](screenshots/dashboard.png)
+
+---
+
 ## ❌ Masalahnya
 
 - Gaming di HP menengah-bawah: frame drop karena **puluhan proses background** makan CPU/RAM
