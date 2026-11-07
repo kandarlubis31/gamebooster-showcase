@@ -45,22 +45,22 @@ Aplikasi Android berbasis **Flutter + native bridge**: pilih game Anda → tap B
 
 ```mermaid
 flowchart TB
- subgraph FL[" Flutter UI (Dart)"]
- DASH["Dashboard screen"]
- ADD["Add game screen"]
- NB["native_bridge.dart<br/>MethodChannel"]
- end
- subgraph NAT[" Native Bridge (Android)"]
- KILL["killApp — paksa stop proses background"]
- CLEAR["clearBackground — bersihkan app list"]
- VPN["stopVpn — matikan VPN aktif"]
- end
- OS[" Android System<br/>ActivityManager · package manager"]
- G[" Game Anda<br/>CPU · RAM · bandwidth penuh"]
- DASH & ADD --> NB
- NB -->|"MethodChannel"| KILL & CLEAR & VPN
- KILL & CLEAR & VPN --> OS
- OS -.->|"resource bebas"| G
+    subgraph FL[" Flutter UI (Dart)"]
+        DASH["Dashboard screen"]
+        ADD["Add game screen"]
+        NB["native_bridge.dart<br/>MethodChannel"]
+    end
+    subgraph NAT[" Native Bridge (Android)"]
+        KILL["killApp — paksa stop proses background"]
+        CLEAR["clearBackground — bersihkan app list"]
+        VPN["stopVpn — matikan VPN aktif"]
+    end
+    OS[" Android System<br/>ActivityManager · package manager"]
+    G[" Game Anda<br/>CPU · RAM · bandwidth penuh"]
+    DASH & ADD --> NB
+    NB -->|"MethodChannel"| KILL & CLEAR & VPN
+    KILL & CLEAR & VPN --> OS
+    OS -.->|"resource bebas"| G
 ```
 
 - **Stack:** Flutter 3 (Dart SDK 3) · native bridge Android · `device_apps` (enumerasi aplikasi) · `permission_handler` · `shared_preferences` · `google_fonts`
