@@ -1,4 +1,4 @@
-# ⚡ GameBooster LBS — Game Booster Android dengan Native Bridge
+# GameBooster LBS — Game Booster Android dengan Native Bridge
 
 <div align="center">
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 📸 Tampilan
+## Tampilan
 
 Dashboard utama — status ping, pilihan mode, whitelist aplikasi, dan tombol boost:
 
@@ -21,42 +21,42 @@ Dashboard utama — status ping, pilihan mode, whitelist aplikasi, dan tombol bo
 
 ---
 
-## ❌ Masalahnya
+## Masalahnya
 
 - Gaming di HP menengah-bawah: frame drop karena **puluhan proses background** makan CPU/RAM
 - "Game booster" di Play Store mayoritas **placebo** — isinya iklan + fake optimization, tidak menyentuh sistem
 - Yang benar-benar bekerja butuh akses **native level Android** — bukan sekadar widget RAM di UI
 
-## ✅ GameBooster LBS
+## GameBooster LBS
 
 Aplikasi Android berbasis **Flutter + native bridge**: pilih game Anda → tap Boost → aplikasi **mematikan proses background yang tidak penting secara paksa** melalui panggilan native, lalu mengalokasikan CPU, RAM, dan koneksi internet murni untuk game.
 
-### ✨ Fitur
+### Fitur
 
-- ⚡ **Boost 1-tap** — kill paksa proses background (via native `killApp`), clear aplikasi background (`clearBackground`), stop VPN yang tidak dipakai (`stopVpn`)
-- 🎮 **Manajemen game** — tambahkan game dari daftar aplikasi ter-install (`device_apps`), dashboard game favorit
-- 📊 **Dashboard status** — kondisi perangkat sebelum/sesudah boost, loading screen ber-tema
-- 🔐 **Permission handler** — alur permintaan izin yang jelas (khususnya untuk akses usage/kill background)
-- 🎨 **UI modern** — Google Fonts, layout rapi, dibangun lintas platform (Android target utama)
+- **Boost 1-tap** — kill paksa proses background (via native `killApp`), clear aplikasi background (`clearBackground`), stop VPN yang tidak dipakai (`stopVpn`)
+- **Manajemen game** — tambahkan game dari daftar aplikasi ter-install (`device_apps`), dashboard game favorit
+- **Dashboard status** — kondisi perangkat sebelum/sesudah boost, loading screen ber-tema
+- **Permission handler** — alur permintaan izin yang jelas (khususnya untuk akses usage/kill background)
+- **UI modern** — Google Fonts, layout rapi, dibangun lintas platform (Android target utama)
 
 ---
 
-## 🏗️ Arsitektur
+## Arsitektur
 
 ```mermaid
 flowchart TB
-    subgraph FL["💙 Flutter UI (Dart)"]
+    subgraph FL[" Flutter UI (Dart)"]
         DASH["Dashboard screen"]
         ADD["Add game screen"]
         NB["native_bridge.dart<br/>MethodChannel"]
     end
-    subgraph NAT["🟣 Native Bridge (Android)"]
+    subgraph NAT[" Native Bridge (Android)"]
         KILL["killApp — paksa stop proses background"]
         CLEAR["clearBackground — bersihkan app list"]
         VPN["stopVpn — matikan VPN aktif"]
     end
-    OS["🤖 Android System<br/>ActivityManager · package manager"]
-    G["🎮 Game Anda<br/>CPU · RAM · bandwidth penuh"]
+    OS[" Android System<br/>ActivityManager · package manager"]
+    G[" Game Anda<br/>CPU · RAM · bandwidth penuh"]
     DASH & ADD --> NB
     NB -->|"MethodChannel"| KILL & CLEAR & VPN
     KILL & CLEAR & VPN --> OS
@@ -68,12 +68,22 @@ flowchart TB
 
 ---
 
-## 🔒 Tentang Source Code
+## English
+
+**GameBooster LBS** is an Android game booster that actually terminates background processes through a native bridge, rather than showing a placebo "cleaner" animation.
+
+It targets mid-range phones where background apps, not the game, are the bottleneck.
+
+The source code is not published; this repository documents the product.
+
+---
+
+## Tentang Source Code
 
 Repository ini adalah **showcase** — dokumentasi produk, bukan kode sumber.
 Source code GameBooster LBS tidak dipublikasikan dan semua hak dilindungi. Lihat [`LICENSE`](LICENSE).
 
-> 💬 Demo, kolaborasi, atau lisensi? Hubungi [Kandar Lubis](https://github.com/kandarlubis31).
+> Demo, kolaborasi, atau lisensi? Hubungi [Kandar Lubis](https://github.com/kandarlubis31).
 
 ---
 
